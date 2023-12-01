@@ -148,8 +148,8 @@
 
     
 <div class="container-grid">
-    <h2>Applied Jobs</h2>
     {% if applied_jobs %}
+    <h2>Applied Jobs</h2>
     <div class="grid-container" id="applied-jobs">
         {% for job in applied_jobs %}
             <div class="job-card">
@@ -162,15 +162,15 @@
             </div>
         {% endfor %}
     </div>
-    {% else %}
+    {% comment %} {% else %}
     <br>
         <h5>No Jobs Applied yet</h5>
-        <a href=""><button class="view-job-button">Find Jobs -></button></a>
+        <a href=""><button class="view-job-button">Find Jobs -></button></a> {% endcomment %}
 
     {% endif %}    
 <br><br><br>
-    <h2>Saved Jobs</h2>
     {% if saved_jobs %}
+    <h2>Saved Jobs</h2>
     <div class="grid-container" id="saved-jobs">
         {% for s in saved_jobs %}
             <div class="job-card">
@@ -183,10 +183,10 @@
             </div>
         {% endfor %}
     </div>
-    {% else %}
+    {% comment %} {% else %}
     <br>
         <h5>No Jobs Saved yet</h5>
-        <a href=""><button class="view-job-button">Find Jobs -></button></a>
+        <a href=""><button class="view-job-button">Find Jobs -></button></a> {% endcomment %}
 
     {% endif %}
 </div>
