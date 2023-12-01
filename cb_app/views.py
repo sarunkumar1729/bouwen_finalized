@@ -165,11 +165,19 @@ def user_logout(request):
 
 @login_required(login_url='login')
 def jobs_available(request):
-    jobs=Jobs.objects.all()
-    current_user=request.user
-    applied_jobs=Applications.objects.filter(candidate=current_user)
-    print(len(applied_jobs))
-    return render(request,'jobs.html',{'jobs':jobs,'applied_jobs':applied_jobs})
+    try:
+        current_user=request.user
+        user_profile=UsersProfile.objects.get(profile_user=current_user)
+    except:
+        user_profile = None
+    if user_profile is None:
+        return redirect('profile')
+    else:
+        jobs=Jobs.objects.all()
+        current_user=request.user
+        applied_jobs=Applications.objects.filter(candidate=current_user)
+        print(len(applied_jobs))
+        return render(request,'jobs.html',{'jobs':jobs,'applied_jobs':applied_jobs})
 
 @login_required(login_url='/custom-login/')
 def apply_job(request,i):

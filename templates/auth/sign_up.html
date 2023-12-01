@@ -45,27 +45,26 @@
                     <div class="registerWrapper">
                         <h2>Career Bouwen</h2>
                         <h1>Begin Your Educational Adventure</h1>
-                        <form action="{% url 'sign_up' %}" name="regForm" method='POST'>
+                        <form id='myForm' action="{% url 'sign_up' %}" name="regForm" method='POST'>
                             {% csrf_token %}
                             <div class="inputBox">
                                 <label for="">Username</label>
-                                <input type="text" name="username" placeholder="" required>
-                                <small id="nameError"></small>
-                            </div>
+                                <input type="text" name="username" id="username" placeholder="">
+                                <span id="usernameError" class="error"></span><br>                            </div>
                             <div class="inputBox">
                                 <label for="">Email</label>
-                                <input type="email" name="email" placeholder="" required>
-                                <small id="emailError"></small>
+                                <input type="email" name="email" id="email" placeholder="">
+                                <span id="emailError" class="error"></span><br>
                             </div>
                             <div class="inputBox">
                                 <label for="">Password</label>
-                                <input type="password" name="password" placeholder="" required>
-                                <small id="passwordError"></small>
+                                <input type="password" name="password" id="password1"  placeholder="">
+                                <span id="password1Error" class="error"></span><br>
                             </div>
                             <div class="inputBox">
                                 <label for="">Confirm Password</label>
-                                <input type="password" name="password1" placeholder="" required>
-                                <small id="password1Error"></small>
+                                <input type="password" name="password1" id="password2" placeholder="">
+                                <span id="password2Error" class="error"></span><br>
                             </div>
                             <button type="submit">Register</button>
                             <p>already have an account? <a href="{% url 'login' %}"> login</a></p>
@@ -83,6 +82,73 @@
     <!-- Js -->
     <script src="{% static 'javascript/sign_up.js' %}"></script>
     <script>
-
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            // Prevent the form from submitting
+            event.preventDefault();
+      
+            // Validate the form
+            if (validateForm()) {
+              // If the form is valid, you can submit it or perform other actions here
+              // alert("Form is valid! Submitting...");
+              // Uncomment the line below to submit the form
+              this.submit();
+            }
+          });
+      
+          function validateForm() {
+            // Reset error messages
+            document.getElementById("usernameError").textContent = "";
+            document.getElementById("emailError").textContent = "";
+            document.getElementById("password1Error").textContent = "";
+            document.getElementById("password2Error").textContent = "";
+      
+            // Get form values
+            var username = document.getElementById("username").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var password1 = document.getElementById("password1").value.trim();
+            var password2 = document.getElementById("password2").value.trim();
+      
+            // Validation logic
+            var isValid = true;
+      
+            // Username validation
+            if (username.length < 6) {
+              document.getElementById("usernameError").textContent = "Username must be at least 6 characters long";
+              isValid = false;
+            }
+      
+            // Email validation
+            if (email === "") {
+              document.getElementById("emailError").textContent = "Email is required";
+              isValid = false;
+            } else {
+              // Simple email format validation
+              var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              if (!emailRegex.test(email)) {
+                document.getElementById("emailError").textContent = "Invalid email format";
+                isValid = false;
+              }
+            }
+      
+            // Password validation
+            if (password1 === "") {
+              document.getElementById("password1Error").textContent = "Password is required";
+              isValid = false;
+            } else if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/.test(password1)) {
+              document.getElementById("password1Error").textContent = "Password must contain at least one uppercase letter, one lowercase letter, and one digit";
+              isValid = false;
+            }
+      
+            // Confirm password validation
+            if (password2 === "") {
+              document.getElementById("password2Error").textContent = "Confirm Password is required";
+              isValid = false;
+            } else if (password1 !== password2) {
+              document.getElementById("password2Error").textContent = "Passwords do not match";
+              isValid = false;
+            }
+      
+            return isValid;
+          }
     </script>
 {% endblock script %}
