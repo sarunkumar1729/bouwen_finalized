@@ -1,0 +1,297 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+@font-face {
+    font-family: 'Gotham-Medium';
+    src: url('../font/Gotham\ Medium.otf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+section.profileSection {
+    height: 100%;
+    padding: 40px 0px;
+    background-color: #718355;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+section.profileSection .personalDetails {
+    background-color: #e9f5db;
+    box-shadow: 0px 20px 50px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    height: auto;
+}
+section.profileSection .personalDetails .info {
+    padding: 20px;
+}
+section.profileSection .personalDetails .info h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-family: 'Gotham-Medium';
+}
+section.profileSection .imageWrapper {
+    height: 350px;
+    overflow: hidden;
+}
+section.profileSection .imageWrapper img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+section.profileSection .phone, .address {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+section.profileSection .personalDetails p {
+    font-size: 17px;
+    font-weight: 500;
+    border-bottom: 1px solid #cbcbcb;
+    /* width: 100%; */
+    color: #636363;
+    line-height: 2;
+}
+section.profileSection h4, h5 {
+    font-family: 'Gotham-Medium';
+}
+section.profileSection  i{
+    color: #10b810;
+}
+section.profileSection .currentAddress {
+    margin: 10px 0px;
+}
+
+
+section.profileSection .professionalDetails {
+    background-color: #e9f5db;
+    box-shadow: 0px 20px 50px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    padding: 50px 50px 50px 50px;
+}
+section.profileSection .professionalDetails  p{
+    margin: 10px 0px 0px 30px;
+    font-size: 18px;
+    line-height: 1.7;
+}
+section.profileSection .professionalDetails .box{
+    margin-bottom: 20px;
+}
+section.profileSection .professionalDetails a {
+    text-align: right;
+    display: block;
+}
+
+
+
+
+/* Profile Section else case */
+.profile-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 5px solid #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .profile-info {
+    margin-top: 20px;
+  }
+
+  .profile-info h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #333333;
+    position: relative;
+    display: inline-block;
+  }
+
+  .profile-info h2:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .line {
+    border-top: 2px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .columns {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .column {
+    flex: 1;
+    text-align: left;
+    padding: 0 10px;
+  }
+
+  .column h4 {
+    font-size: 20px;
+    color: #333333;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  .column h4:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+  }
+  .icon-with-text {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .icon-with-text i {
+    margin-right: 10px;
+  }
+
+  h5{
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+
+
+
+  @media (max-width: 768px) {
+    .columns {
+      flex-direction: column;
+    }
+  }
+
+
+
+  /* Applied and Saved Jobs */
+
+  .container-grid {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.grid-container {
+    display: grid;
+    gap: 20px;
+}
+
+.job-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.view-job-button {
+    background-color:rgb(27, 16, 184);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 601px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+
+
+
+@media(max-width: 1024px) {
+    .professionalDetails {
+        margin-top: 30px;
+    }
+}
+@media(max-width: 576px) {
+    section.profileSection {
+        padding: 40px 0px;
+    }
+    section.profileSection .personalDetails p {
+        width: 100%;
+        font-size: 16px;
+        margin: 7px;
+        line-height: 1.8;
+    }
+    section.profileSection .currentAddress {
+        margin: 5px 0px;
+    }
+    section.profileSection .professionalDetails {
+        padding: 40px 20px;
+        margin: 30px 0px;
+    }
+    section.profileSection .professionalDetails  p{
+        margin: 5px 0px 0px 20px;
+        line-height: 1.6;
+        font-size: 16px;
+    }
+    section.profileSection .professionalDetails .box{
+        margin-bottom: 20px;
+    }
+}

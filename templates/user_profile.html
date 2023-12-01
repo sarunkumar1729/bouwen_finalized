@@ -1,0 +1,69 @@
+{% extends "includes/admin_base.html" %}
+{% load static %}
+{% block title %}contact us{% endblock title %}
+{% block head %}
+    <!-- Bootstrap Icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Scroll-Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+{% endblock head %}
+{% block content %}
+<style>
+    h2{
+    background-color: #fefefe;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    }
+    .chg th{
+        color: #fefefe;
+    }
+    th,td{
+        padding:10px;
+    }
+</style>
+<h2 data-aos="fade-right" data-aos-delay="300" data-aos-duration='1000' >Applied Posts</h2>
+<br><br>
+
+<img src='{{profile.photo.url}}' width='100px'>
+
+<table>
+<tr>
+    <th>NAME</th>
+    <td>{{profile.fullname}}</td>
+</tr>
+<tr>
+    <th>PHONE 1</th>
+    <td>{{profile.phone1}}</td>
+</tr>
+<tr>
+    <th>PHONE 2</th>
+    <td>{{profile.phone2}}</td>
+</tr>
+<tr>
+    <th>EMAIL</th>
+    <td>{{profile.email}}</td>
+</tr>
+</table>
+
+<div class="table-responsive-lg ">
+    <table class="table table-bordered ">
+        <tr class="chg" style="background-color: #29544e;">
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>COMPANY</th>
+            <th>APPLIED DATE</th>
+        </tr>
+    {% for job in jobs %}
+            <tr>
+            <td>{{job.job.id}}</td>
+            <td>{{job.job.job_title}}</td>
+            <td>{{job.job.company_name}}</td>
+            <td>{{job.applied_date}}</td>
+            </tr>
+    {% endfor %}
+    </table>
+<br><br><br>
+{% endblock content %}
+

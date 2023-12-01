@@ -1,0 +1,53 @@
+{% extends "includes/admin_base.html" %}
+{% load static %}
+{% block title %}contact us{% endblock title %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/usersList.css' %}">
+    <!-- Bootstrap Icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Scroll-Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+{% endblock head %}
+{% block content %}
+    <section class="usersList">
+        <div class="container">
+            <div class="row"> 
+                    <h2 data-aos="fade-right" data-aos-delay="300" data-aos-duration='1000'>User Management</h2>
+                    
+                    <div class="table-responsive-lg ">
+                        <table class="table table-bordered ">
+                        <tr class="chg" >
+                            <th>S.NO</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone1</th>
+                            <th>Phone2</th>
+                            <th>Photo</th>
+                            <th>CV</th>
+                            <th>JOBS</th>
+                        </tr>
+                        {% for candidate in applied_candidates %}
+                        <tr>
+                            <td>{{candidate.candidate.id}}</td>
+                            <td>{{candidate.candidate.profile_user.username}}</td>
+                            <td>{{candidate.candidate.email}}</td>
+                            <td>{{candidate.candidate.phone1}}</td>
+                            <td>{{candidate.candidate.phone2}}</td>
+                                {% if candidate.candidate.photo %}
+                                    <td><img src='{{candidate.candidate.photo.url}}' width='100px'></td>
+                                {% else %}
+                                    <td><img src='https://cdn-icons-png.flaticon.com/512/149/149071.png' width='100px'></td>
+                                {% endif %}
+                            {% comment %} <td><a href="{% url 'userprofile' candidate.id %}">VIEW PROFILE</a></td> {% endcomment %}
+                            <td><a id="res" href="{{candidate.resume.url}}">RESUME</a></td>
+                            <td><a  id="res" href="{% url 'userprofile' candidate.id %}">JOBS</a></td>
+                        </tr>
+
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br>
+{% endblock content %}

@@ -1,0 +1,159 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    color: #13abde;
+  }
+  
+  a {
+    color: #149ddd;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #37b3ed;
+    text-decoration: none;
+  }
+  
+  #content {
+    margin-left: 160px;
+    padding: 20px;
+  }
+
+  
+
+  
+
+  /*--------------------------------------------------------------
+  # Header
+  --------------------------------------------------------------*/
+  #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    transition: all ease-in-out 0.5s;
+    z-index: 1;
+    transition: all 0.5s;
+    padding: 0 15px;
+    background: #20283E ;
+    overflow-y: auto;
+  }
+  
+  #header .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130px;
+    overflow: hidden;
+  }
+  #header .profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-top: 40px;
+    overflow: hidden;
+    border: 5px solid #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  
+
+  
+  #main {
+    margin-left: 300px;
+  }
+  
+  .container,
+  .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  @media (max-width: 1199px) {
+    #header {
+      left: -200px;
+    }
+  
+    #main {
+      margin-left: 0;
+    }
+  
+    .container,
+    .container-fluid {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  }
+  
+  /*--------------------------------------------------------------
+  # Navigation Menu
+  --------------------------------------------------------------*/
+  /* Desktop Navigation */
+  .nav-menu {
+    padding: 30px 0 0 0;
+  }
+  
+  .nav-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .nav-menu>ul>li {
+    position: relative;
+    white-space: nowrap;
+  }
+  
+  .nav-menu a,
+  .nav-menu a:focus {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    transition: 0.3s;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .nav-menu a i,
+  .nav-menu a:focus i {
+    font-size: 24px;
+    padding-right: 8px;
+    color: #fff;
+  }
+  
+ 
+  
+  
+  
+  /* Mobile Navigation */
+  .mobile-nav-toggle {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    z-index: 2;
+    border: 0;
+    font-size: 24px;
+    transition: all 0.4s;
+    outline: none !important;
+    background-color: #20283E;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+  
+  .mobile-nav-active #header {
+    left: 0;
+  }
+  
+  

@@ -1,0 +1,121 @@
+{% extends "includes/admin_base.html" %}
+{% load static %}
+{% block title %}contact us{% endblock title %}
+{% block head %}
+
+
+    <link rel="stylesheet" href="{% static 'css/jobPost.css' %}">
+
+
+{% endblock head %}
+
+{% block content %}
+
+    <section class="JobPost" >
+            <div class="container">
+                <form action="{% url 'jobs' %}" method='POST'>
+                    {% csrf_token %}
+                    <div class="row">
+                        <h2>Job Listings Administration</h2>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="">Job Title</label>
+                                <input type="text" name="job_title">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Company Name</label>
+                                <input type="text" name="company_name">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Location</label>
+                                <input type="text" name="location">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Full-time or Part-time</label>
+                                <select name="mode" id="">
+                                    <option value="full-time">Full-time</option>
+                                    <option value="part-time">Part-time</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Description</label>
+                                <input type="text" name="description">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Benefits</label>
+                                <input type="text" name="benefits">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="">Experience Required</label>
+                                <input type="text" name="experience_required">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Skills Required</label>
+                                <input type="text" name="skills_required">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Starting Salary</label>
+                                <input type="number" name="starting_salary">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Ending Salary</label>
+                                <input type="number" name="ending_salary">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Languages</label>
+                                <input type="text" name="languages">
+                            </div>
+                            {% comment %} <div class="form-group">
+                                <label for="">Resume</label>
+                                <input type="file" name="resume">
+                            </div> {% endcomment %}
+                            <button type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </section>
+    <br><br>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive-lg">
+                    <table class="table table-bordered table-hover">
+                        <tr class="chg">
+                            <th class="table-active">ID</th>
+                            <th class="table-active">JOB TITLE</th>
+                            <th class="table-active">COMPANY</th>
+                            <th class="table-active">LOCATION</th>
+                            <th class="table-active">MODE</th>
+                            <th class="table-active">DESCRIPTION</th>
+                            <th class="table-active">EXPERIENCE</th>
+                            <th class="table-active">SKILLS</th>
+                            <th class="table-active">SALARY</th>
+                            <th class="table-active">LANGUAGES</th>
+                            <th class="table-active"></th>
+                        </tr>
+                        {% for job in jobs %}
+                        <tr>
+                            <td>{{job.id}}</td>
+                            <td>{{job.job_title}}</td>
+                            <td>{{job.company_name}}</td>
+                            <td>{{job.location}}</td>
+                            <td>{{job.mode}}</td>
+                            <td>{{job.description}}</td>
+                            <td>{{job.experience_required}}</td>
+                            <td>{{job.skills_required}}</td>
+                            <td>{{job.starting_salary}}-{{job.ending_salary}}</td>
+                            <td>{{job.languages}}</td>
+                            <td><a id="cand" href="{% url 'filtercandidates' job.id %}">CANDIDATES</a>|<a id="del">DELETE</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<br><br>
+{% endblock content %}

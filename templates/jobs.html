@@ -1,0 +1,42 @@
+{% extends "includes/base.html" %}
+{% load static %}
+{% block title %}Jobs Available{% endblock title %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/jobsAvail.css' %}">
+    <!-- Bootstrap Icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+{% endblock head %}
+{% block content %}
+<style>
+    td,th{
+        padding:10px;
+    }
+    .content-wrapper {
+        background-color: rgb(236, 236, 236);
+        padding: 50px 0px;
+    }
+</style>
+
+
+{% if msg %}
+    <p class='text text-primary text-center'>{{msg}}</p>
+{% endif %}
+
+<div class="row content-wrapper">
+    {% for job in jobs %}
+        {% if forloop.counter0|divisibleby:3 %}
+        {% endif %}
+        <div class="col-lg-4 col-12 mb-4 text-center jobWrapper">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <img src="{% static 'images/job.png' %}" width='50px'>
+                    <h5 class="card-title">{{ job.job_title }}</h5>
+                    <p class="card-text">{{ job.company_name }}</p>
+                    <a class='btn btn-primary' href="{% url 'application_page' job.id %}">VIEW JOB</a>
+                    <a class='btn btn-primary' href="{% url 'savejob' job.id %}">SAVE</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>    
+{% endblock content %}
