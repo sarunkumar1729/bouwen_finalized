@@ -49,8 +49,11 @@
                             {% csrf_token %}
                             <div class="inputBox">
                                 <label for="">Username</label>
-                                <input type="text" name="username" id="username" placeholder="">
-                                <span id="usernameError" class="error"></span><br>                            </div>
+                                {% comment %} <input type="text" name="username" id="username" placeholder=""> {% endcomment %}
+                                <input name="username" type="text" onkeyup="checkUsernameAvailability()" id="username">
+                                <span id="usernameMessage"></span>
+                                <span id="usernameError" class="error"></span><br>                            
+                            </div>
                             <div class="inputBox">
                                 <label for="">Email</label>
                                 <input type="email" name="email" id="email" placeholder="">

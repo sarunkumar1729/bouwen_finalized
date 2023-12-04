@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 # from django.shortcuts import get_object_or_404
 from django.conf import settings
 # import os
+from django.http import JsonResponse
 
 # Create your views here.
 def index(request):
@@ -280,3 +281,13 @@ def filter_candidates(request,i):
     applied_users=[c.candidate for c in applied_jobs]
     user_profiles = UsersProfile.objects.filter(profile_user__in=applied_users)
     return render(request,'filtered_candidates.html',{'applied_candidates':user_profiles})
+
+
+def check_username(request):
+    if request.method == 'GET':
+        username = request.GET.get('username', None)       
+        if username is not None:
+            user_exists = User.objects.filter(username=username).exists()
+            return JsonResponse({'exists': user_exists})
+
+    return JsonResponse({'error': 'Invalid request'}, status=400)

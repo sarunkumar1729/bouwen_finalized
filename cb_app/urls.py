@@ -24,5 +24,7 @@ urlpatterns = [
     path('applicationpage/<int:i>',views.application_page,name='application_page'),
     path('sendmsg',views.send_msg,name='sendmsg'),
     path('savejob/<int:i>',views.save_job,name='savejob'),
-    path('filtercandidates/<int:i>',views.filter_candidates,name='filtercandidates')
+    path('filtercandidates/<int:i>',views.filter_candidates,name='filtercandidates'),
+    path('check_username/', views.check_username, name='check_username'),
+
 ]
