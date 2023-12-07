@@ -13,13 +13,25 @@ from django.http import JsonResponse
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    try:
+        current_user=request.user
+        user_profile=UsersProfile.objects.get(profile_user=current_user)
+    except:
+        user_profile = None
+    if user_profile is None:
+        return redirect('profile')
+    else:
+        jobs=Jobs.objects.all()
+        current_user=request.user
+        applied_jobs=Applications.objects.filter(candidate=current_user)
+        print(len(applied_jobs))
+        return render(request,'index.html',{'jobs':jobs,'applied_jobs':applied_jobs})
 
 def about(request):
     return render(request, 'about.html')
 
-def courses(request):
-    return render(request, 'courses.html')
+# def courses(request):
+#     return render(request, 'courses.html')
 
 def contact_us(request):
     return render(request, 'contact_us.html')
@@ -164,33 +176,33 @@ def user_logout(request):
     logout(request)
     return redirect('index')
 
-@login_required(login_url='login')
-def jobs_available(request):
-    try:
-        current_user=request.user
-        user_profile=UsersProfile.objects.get(profile_user=current_user)
-    except:
-        user_profile = None
-    if user_profile is None:
-        return redirect('profile')
-    else:
-        jobs=Jobs.objects.all()
-        current_user=request.user
-        applied_jobs=Applications.objects.filter(candidate=current_user)
-        print(len(applied_jobs))
-        return render(request,'jobs.html',{'jobs':jobs,'applied_jobs':applied_jobs})
+# @login_required(login_url='login')
+# def jobs_available(request):
+#     try:
+#         current_user=request.user
+#         user_profile=UsersProfile.objects.get(profile_user=current_user)
+#     except:
+#         user_profile = None
+#     if user_profile is None:
+#         return redirect('profile')
+#     else:
+#         jobs=Jobs.objects.all()
+#         current_user=request.user
+#         applied_jobs=Applications.objects.filter(candidate=current_user)
+#         print(len(applied_jobs))
+#         return render(request,'jobs.html',{'jobs':jobs,'applied_jobs':applied_jobs})
 
 @login_required(login_url='/custom-login/')
 def apply_job(request,i):
     job=Jobs.objects.get(id=i)
     candidate=request.user
     if Applications.objects.filter(candidate=candidate,job=job).exists():
-        return redirect("jobsavailable")
+        return redirect("index")
     else:
         new_applications=Applications(candidate=candidate,job=job)
         new_applications.save()
         print('successfully applied for the job')
-        return redirect('jobsavailable')
+        return redirect('index')
 
 
     
@@ -268,12 +280,12 @@ def save_job(request,i):
     job=Jobs.objects.get(id=i)
     candidate=request.user
     if Saved_jobs.objects.filter(candidate=candidate,job=job).exists():
-        return redirect("jobsavailable")
+        return redirect("index")
     else:
         new_job=Saved_jobs(candidate=candidate,job=job)
         new_job.save()
         print('successfully applied for the job')
-        return redirect('jobsavailable')
+        return redirect('index')
      
 def filter_candidates(request,i):
     job=Jobs.objects.get(id=i)
