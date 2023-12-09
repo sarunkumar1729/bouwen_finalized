@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-zm&xpwo$!3tku%&&pi0_f=mapmnigmqmct%e&jh&mru$es5-)w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.careerbouwen.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'career_bouwen.wsgi.application'
 # DATABASES = {
 #     'default':{
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'techolastechnolo$careerbouwen',
-#         'USER':'techolastechnolo',
+#         'NAME': 'Career Bouwentechnolo$careerbouwen',
+#         'USER':'Career Bouwentechnolo',
 #         'PASSWORD':'careerbouwen2023',
-#         'HOST':'techolastechnologies.mysql.pythonanywhere-services.com',
+#         'HOST':'Career Bouwentechnologies.mysql.pythonanywhere-services.com',
 #         'OPTIONS': {
 #             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
 #         }

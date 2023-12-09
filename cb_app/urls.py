@@ -26,5 +26,5 @@ urlpatterns = [
     path('savejob/<int:i>',views.save_job,name='savejob'),
     path('filtercandidates/<int:i>',views.filter_candidates,name='filtercandidates'),
     path('check_username/', views.check_username, name='check_username'),
-
+    path('search',views.search_job,name='search')
 ]
