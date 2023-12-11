@@ -305,6 +305,7 @@ def check_username(request):
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
 def search_job(request):
-    search_query=request.GET.get('search_query')
+    search_query=request.POST['search_query']
     jobs=Jobs.objects.filter(job_title__icontains=search_query)
+    print(search_query)
     return render(request,'index.html',{'jobs':jobs})

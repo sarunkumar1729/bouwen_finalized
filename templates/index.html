@@ -51,13 +51,16 @@
 
 <div class="row content-wrapper">
     <div class="input-group p-3">
+      <form action="{% url 'search' %}" style="width:100%;display:inline;" method="POST">
+        {% csrf_token %}
         <div class="form-outline" data-mdb-input-init>
           <input type="search" name='search_query' id="form1" class="form-control bg-light" />
           {% comment %} <label class="form-label" for="form1">Search</label> {% endcomment %}
         </div>
-        <button type="button" class="btn btn-primary" href="{% url 'search' %}" data-mdb-ripple-init>
+        <button type="submit" class="btn btn-primary" data-mdb-ripple-init>
           <i class="fas fa-search"></i>
         </button>
+      </form>
     </div>
 
     {% for job in jobs %}
